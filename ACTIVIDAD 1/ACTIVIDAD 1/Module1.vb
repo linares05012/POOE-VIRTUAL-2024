@@ -1,9 +1,12 @@
-﻿Module Module1
+﻿Imports System.Diagnostics.Eventing.Reader
+
+Module Module1
 
 
     Sub Main()
         Dim continuar As String = "s"
         While continuar = "s"
+
             Console.WriteLine("*** MENU ***")
             Console.WriteLine("1. Determinar si una persona es menor o mayor de edad.")
             Console.WriteLine("2. Determinar si un numero es positivo o negativo.")
@@ -12,19 +15,21 @@
             Console.WriteLine("5. Tabla Multiplicar.")
             Console.WriteLine("0. Salir.")
             Console.Write("Opcion: ")
+
             Dim opcion As Integer = Console.ReadLine()
             Console.Clear()
             Select Case opcion
                 Case 1
                     edad()
                 Case 2
-                    primo()
+                    PositivoNegativo()
                 Case 3
-                    fibonacci()
+                    totalpagar(0.00
+)
                 Case 4
                     tablaMultiplicar()
                 Case Else
-                    continuar = "n"
+                    continuar = "0"
             End Select
         End While
     End Sub
@@ -34,8 +39,20 @@
         Console.Write("ingresa su edad: ")
         edad = Double.Parse(Console.ReadLine())
         If (edad >= 18) Then
-            Console.WriteLine("Mayor de edad ")
-        Else Console.WriteLine("Menor de edad")
+            Console.WriteLine("Usted es Mayor de edad ")
+        Else Console.WriteLine("Usted es Menor de edad")
+        End If
+
+    End Sub
+    Sub PositivoNegativo()
+
+        Dim numero As Integer
+        Console.Write("Escriba un numero: ")
+        numero = Console.ReadLine()
+
+        If (numero >= 0) Then
+            Console.WriteLine("Su numero es Positivo")
+        Else Console.WriteLine("su numero es Negativo")
         End If
 
     End Sub
@@ -47,17 +64,38 @@
             Console.WriteLine("{0}x{1}={2}", ntabla, i, ntabla * i)
         Next
     End Sub
-    Sub fibonacci()
-        Console.Write("Maximo a mostrar: ")
-        Dim n As Integer = Console.ReadLine()
-        Dim a = 1, b = 0, c As Integer = 1
+    Sub totalpagar(descuento As Double)
 
-        While c <= n
-            c = a + b
-            Console.WriteLine("{0}+{1}={2}", a, b, c)
-            b = a
-            a = c
-        End While
+        Console.Write("Ingrese el monto de la compra: ")
+        Dim montoCompra As Double = Convert.ToDouble(Console.ReadLine())
+
+        If (montoCompra >= 1000) Then
+
+            descuento = 0.3
+
+        ElseIf (montoCompra >= 500 <= 999.99) Then
+
+            descuento = 0.2
+
+        ElseIf (montoCompra >= 250.0 <= 499.99) Then
+
+            descuento = 0.1
+
+        ElseIf (montoCompra > 0 <= 249.99) Then
+
+            descuento = 0.05
+
+        End If
+
+
+        Dim montoDescuento = montoCompra * descuento
+        Dim totalpagar = montoCompra - montoDescuento
+
+
+        Console.WriteLine($"\nMonto de compra: ${montoCompra}")
+        Console.WriteLine($"Descuento aplicado: ${descuento * 100}%")
+
+        Console.WriteLine($"Total a pagar: ${totalpagar}")
     End Sub
 End Module
 
