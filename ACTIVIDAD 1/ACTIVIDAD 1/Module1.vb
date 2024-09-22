@@ -59,31 +59,6 @@
             a = c
         End While
     End Sub
-    Sub primo()
-        'Un numero es primo solo si es divisible entre el mismo y la unidad.
-        Dim respuesta As String = "NO es primo"
-        Dim num, n, i As Integer
-        n = 0
-        i = 1
-        Console.Write("Num: ")
-        num = Console.ReadLine()
-
-        While (n <= 2 And i <= num)
-            If (determinarParImpar(num, i)) Then
-                n = n + 1
-            End If
-            i = i + 1
-        End While
-        If (n <= 2) Then
-            respuesta = "SI es primo"
-        End If
-        Console.WriteLine("El numero {0} {1}", num, respuesta)
-    End Sub
-
-    Function determinarParImpar(ByVal num As Integer, ByVal i As Integer)
-        Return num Mod i = 0
-    End Function
-
 End Module
 
 
